@@ -32,3 +32,4 @@ class MineralViewsTests(TestCase):
     def test_mineral_detail_view(self):
         resp = self.client.get(reverse('minerals:detail', kwargs={'slug': self.mineral1.slug}))
         self.assertEqual(resp.status_code, 200)
+        self.assertEqual(self.mineral1, resp.context['mineral'])
